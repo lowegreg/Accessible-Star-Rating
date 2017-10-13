@@ -1,0 +1,8 @@
+.star-rating {
+  line-height:32px;
+  font-size:2em;
+  cursor: pointer;
+}
+.star-rating > .fa {
+    margin: 3px;
+}
