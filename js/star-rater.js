@@ -15,6 +15,7 @@
             color_outline: "#ccc",
             fa_class_fill: "fa-star",
             fa_class_outline: "fa-star-o",
+            input_name: Rater.prop('id')+"_input",
             defaultValue: 0
         }, options);
 
@@ -22,7 +23,7 @@
             for (i = 0; i < settings.count; i++) {
                 Rater.append("<span class='fa " + settings.fa_class_outline + "' data-rating='" + parseInt(i + 1) + "' aria-label='" + parseInt(i + 1) + " " + settings.fa_class_fill.replace("fa-", "") + "'></span>");
             }
-            Rater.append("<input type='hidden' class='rating-value' value='" + settings.defaultValue + "'/>");
+            Rater.append("<input type='hidden' id='" + settings.input_name + "' name='" + settings.input_name + "' class='rating-value' value='" + settings.defaultValue + "'/>");
             SetRating(1);
         };
 
