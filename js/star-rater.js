@@ -72,11 +72,13 @@
                     return SetRating(event.which);
                 }
             } else if (event.which === 37 || event.which === 40) {
+                event.preventDefault();
                 if ($(this).siblings("input.rating-value").val() > 0) {
                     $(this).siblings("input.rating-value").val((parseInt($(this).siblings("input.rating-value").val())) - 1);
                     return SetRating(event.which);
                 }
             } else if (event.which === 39 || event.which === 38) {
+                event.preventDefault();
                 if ($(this).siblings("input.rating-value").val() < settings.count) {
                     $(this).siblings("input.rating-value").val((parseInt($(this).siblings("input.rating-value").val())) + 1);
                     return SetRating(event.which);
