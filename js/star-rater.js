@@ -1,7 +1,7 @@
 // Accessible Star Rating with Font Awesome
 // by Greg Lowe
 //
-// Version 0.1.0
+// Version 0.1.1
 // Full source at https://github.com/lowegreg/Accessible-Star-Rating
 // MIT License, https://github.com/lowegreg/Accessible-Star-Rating/LICENSE
 (function($) {
@@ -29,7 +29,7 @@
 
         var SetRating = function(keyCode) {
             return Rater.children(".fa").each(function() {
-                if (keyCode == 1) {
+                if (keyCode == 1 || keyCode == 0) {
                     $(this).blur()
                 }
                 if (parseInt($(this).siblings("input.rating-value").val()) == parseInt($(this).data("rating"))) {
@@ -94,6 +94,15 @@
         Rater.on("focusout", ".fa", function() {
             if ($(this).siblings("input.rating-value").val() == 0) {
                 $(this).parent().children(":first").attr("tabindex", 0);
+            }
+        });
+
+        Rater.on("touchmove", ".fa", function (event) {
+            var touch = event.originalEvent.touches[0];
+            var el = $(document.elementFromPoint(touch.clientX, touch.clientY));
+            if (parseInt($(el).siblings("input.rating-value").val()) != parseInt($(el).data("rating"))) {
+                var e = jQuery.Event("click", {which: 1});
+                $(el).trigger(e);
             }
         });
 
